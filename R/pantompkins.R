@@ -48,6 +48,6 @@ rpeaks_pan_tompkins <- function(ecg, sample_rate, integration_window = 0.15,
     refractory  = round(sample_rate * refractory)# 200ms refractory period)
   )
   
-  # peaks lag behind by integration window / 2
-  rpeak_idx - round(length(integrator) / 2)
+  # return time in seconds peaks lag behind by integration window / 2
+  (rpeak_idx - round(length(integrator) / 2)) * sample_rate
 }
