@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1588184255365.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "938131342",
+    "id" : "DDE2B063",
+    "lastKnownWriteTime" : 1588180458,
+    "last_content_update" : 1588180458,
+    "path" : "D:/surfdrive/PhD/Dev/rpeaks/src/pantompkins.cpp",
+    "project_path" : "src/pantompkins.cpp",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "cpp"
+}

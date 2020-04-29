@@ -1,0 +1,3 @@
+useDynLib(rpeaks, .registration=TRUE)
+importFrom(Rcpp, evalCpp)
+export("Rcpp.fake.fun")

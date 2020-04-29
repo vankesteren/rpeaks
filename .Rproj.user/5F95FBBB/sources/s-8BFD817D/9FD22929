@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1588183652480.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9FD22929",
+    "lastKnownWriteTime" : 1588184390,
+    "last_content_update" : 1588184390130,
+    "path" : "D:/surfdrive/PhD/Dev/rpeaks/R/pantompkins.R",
+    "project_path" : "R/pantompkins.R",
+    "properties" : {
+        "cursorPosition" : "25,16",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
