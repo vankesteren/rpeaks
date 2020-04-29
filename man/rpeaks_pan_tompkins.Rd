@@ -2,13 +2,15 @@
 % Please edit documentation in R/pantompkins.R
 \name{rpeaks_pan_tompkins}
 \alias{rpeaks_pan_tompkins}
-\title{Detect rpeaks using the pan-tompkins algorithm}
+\title{Detect R peaks in ecg data using the Pan-Tompkins algorithm}
 \usage{
 rpeaks_pan_tompkins(
   ecg,
   sample_rate,
   integration_window = 0.15,
-  refractory = 0.2
+  refractory = 0.2,
+  band_low = 5,
+  band_high = 15
 )
 }
 \arguments{
@@ -19,11 +21,24 @@ rpeaks_pan_tompkins(
 \item{integration_window}{size of the integration window in seconds}
 
 \item{refractory}{refractory period in seconds (minimum time between peaks)}
+
+\item{band_low}{lower bound of the band-pass filter in Hz}
+
+\item{band_high}{upper bound of the band-pass filter in Hz}
 }
 \description{
-Fast implementation of the pan-tompkins algorithm. The default parameters are
-taken from the original pan and tompkins paper
+Fast implementation of the Pan-Tompkins algorithm. The default parameters are
+taken from the original pan and tompkins paper.
+}
+\details{
+This algorithm uses a butterworth filter of order 1 for the 
+band-pass step, and a 3rd-order length-5 Savitzky-Golay smoothing filter to 
+compute the derivative of the band-passed signal. Peak detection on the 
+preprocessed signal works in a simplified way: we take the first value above
+the lower bound (3 * the mean signal value) which is higher than its 
+neighbours, and not within the refractory period after the previous R peak.
 }
 \references{
-Pan, J., & Tompkins, W. J. (1985). A real-time QRS detection algorithm. IEEE transactions on biomedical engineering, (3), 230-236.
+Pan, J., & Tompkins, W. J. (1985). A real-time QRS detection 
+algorithm. IEEE transactions on biomedical engineering, (3), 230-236.
 }
