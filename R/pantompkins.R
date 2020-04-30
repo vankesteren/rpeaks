@@ -32,10 +32,10 @@ rpeaks_pan_tompkins <- function(ecg, sample_rate, integration_window = 0.15,
                                 band_high = 15) {
   # Nyquist frequency
   nyq <- sample_rate / 2
+  n <- length(ecg)
   
   # Expand ecg with 1 second at the start and the end
-  ecg_expand <- 
-    c(ecg[sample_rate:1], ecg, ecg[length(ecg):(length(ecg) - sample_rate)])
+  ecg <- c(ecg[sample_rate:1], ecg, ecg[n:(n - sample_rate)])
   
   # band-pass filter
   bandpass <- signal::butter(
@@ -43,24 +43,23 @@ rpeaks_pan_tompkins <- function(ecg, sample_rate, integration_window = 0.15,
     W    = c(band_low / nyq, band_high / nyq), 
     type = "pass"
   )
-  ecg_filt <- signal::filter(bandpass, ecg_expand)
+  ecg <- signal::filter(bandpass, ecg)
   
   # smooth derivative filter
   deriv <- signal::sgolay(p = 3, n = 5, m = 1)
-  ecg_deriv <- signal::filter(deriv, ecg_filt)
+  ecg <- signal::filter(deriv, ecg)
   
   # square the derivatives and remove the pre and post second
-  ecg_deriv_2 <- 
-    (ecg_deriv*ecg_deriv)[(sample_rate + 1):(sample_rate + length(ecg))]
+  ecg <- (ecg*ecg)[(sample_rate + 1):(sample_rate + n)]
   
   # fast integration of the signal using a boxcar (C++)
   integrator <- rep(1, round(integration_window*sample_rate))
-  ecg_int <- fast_conv(ecg_deriv_2, integrator)
+  ecg <- fast_conv(ecg, integrator)
   
   # fast peak detection (C++)
   rpeak_idx <- detect_peaks(
-    signal      = ecg_int, 
-    lower_bound = mean(ecg_int)*3, 
+    signal      = ecg, 
+    lower_bound = mean(ecg)*3, 
     refractory  = round(sample_rate * refractory)
   )
   

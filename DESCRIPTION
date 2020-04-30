@@ -1,7 +1,7 @@
 Package: rpeaks
 Type: Package
 Title: Fast detection of R peaks in ecg data
-Version: 1.3
+Version: 1.4
 Date: 2020-04-29
 Author: Erik-Jan van Kesteren
 Maintainer: Erik-Jan van Kesteren <e.vankesteren1@uu.nl>
