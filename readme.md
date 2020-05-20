@@ -6,6 +6,8 @@ Fast implementation of Pan & Tompkins (1985). It is programmed relatively effici
 
 This package gratefully borrows parts of the processing code from `rsleep::detect_rpeaks()`.
 
+_NB: use at your own risk. This method has not been officially validated!_
+
 ## Speed comparison
 <p align="center">
   <img src="./img/speedcomparison.png" width="700px"></img>
