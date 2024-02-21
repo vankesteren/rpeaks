@@ -6,6 +6,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // fast_conv
 arma::vec fast_conv(const arma::vec& x, const arma::vec& y);
 RcppExport SEXP _rpeaks_fast_conv(SEXP xSEXP, SEXP ySEXP) {

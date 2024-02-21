@@ -31,14 +31,24 @@ Fast implementation of the Pan-Tompkins algorithm. The default parameters are
 taken from the original pan and tompkins paper.
 }
 \details{
-This algorithm uses a butterworth filter of order 1 for the 
-band-pass step, and a 3rd-order length-5 Savitzky-Golay smoothing filter to 
-compute the derivative of the band-passed signal. Peak detection on the 
+This algorithm uses a butterworth filter of order 1 for the
+band-pass step, and a 3rd-order length-5 Savitzky-Golay smoothing filter to
+compute the derivative of the band-passed signal. Peak detection on the
 preprocessed signal works in a simplified way: we take the first value above
-the lower bound (3 * the mean signal value) which is higher than its 
+the lower bound (3 * the mean signal value) which is higher than its
 neighbours, and not within the refractory period after the previous R peak.
 }
+\examples{
+ecg_url <- "https://physionet.org/files/ecgiddb/1.0.0/Person_01/rec_2.dat?download"
+ecg_dat <- readBin(ecg_url, integer(), 500*30)
+ecg_sec <- (0:(length(ecg_dat) - 1)) / 500 # rel. time in seconds
+r_peaks <- rpeaks_pan_tompkins(ecg = ecg_dat, sample_rate = 500)
+plot(x = ecg_sec, y = ecg_dat, type = "l", xlab = "time (seconds)", ylab = "ecg")
+abline(v = r_peaks, col = "blue", lty = 3)
+
+
+}
 \references{
-Pan, J., & Tompkins, W. J. (1985). A real-time QRS detection 
+Pan, J., & Tompkins, W. J. (1985). A real-time QRS detection
 algorithm. IEEE transactions on biomedical engineering, (3), 230-236.
 }

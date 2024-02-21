@@ -1,7 +1,7 @@
 Package: rpeaks
 Type: Package
 Title: Fast detection of R peaks in ecg data
-Version: 1.4
+Version: 1.5
 Date: 2020-04-29
 Author: Erik-Jan van Kesteren
 Maintainer: Erik-Jan van Kesteren <e.vankesteren1@uu.nl>
@@ -13,4 +13,6 @@ Imports:
     Rcpp,
     signal
 LinkingTo: Rcpp, RcppArmadillo
-RoxygenNote: 7.1.0
+Encoding: UTF-8
+RoxygenNote: 7.3.0
+Roxygen: list(markdown = TRUE)

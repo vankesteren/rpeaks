@@ -26,6 +26,15 @@ NULL
 #' @references Pan, J., & Tompkins, W. J. (1985). A real-time QRS detection 
 #' algorithm. IEEE transactions on biomedical engineering, (3), 230-236.
 #' 
+#' @examples
+#' ecg_url <- "https://physionet.org/files/ecgiddb/1.0.0/Person_01/rec_2.dat?download"
+#' ecg_dat <- readBin(ecg_url, integer(), 500*30)
+#' ecg_sec <- (0:(length(ecg_dat) - 1)) / 500 # rel. time in seconds
+#' r_peaks <- rpeaks_pan_tompkins(ecg = ecg_dat, sample_rate = 500)
+#' plot(x = ecg_sec, y = ecg_dat, type = "l", xlab = "time (seconds)", ylab = "ecg")
+#' abline(v = r_peaks, col = "blue", lty = 3)
+#' 
+#' 
 #' @export
 rpeaks_pan_tompkins <- function(ecg, sample_rate, integration_window = 0.15,
                                 refractory = 0.2, band_low = 5, 
