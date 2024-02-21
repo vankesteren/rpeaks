@@ -14,7 +14,7 @@ _NB: use at your own risk. This method has not been officially validated!_
 
 Install `rpeaks` from `r-universe` like so:
 ```r
-install.packages("rpeaks", repos = c('https://vankesteren.r-universe.dev', 'https://cloud.r-project.org'))
+install.packages("rpeaks", repos = c("https://vankesteren.r-universe.dev", "https://cloud.r-project.org"))
 ```
 
 ## Usage
@@ -25,11 +25,18 @@ ecg_url <- "https://physionet.org/files/ecgiddb/1.0.0/Person_01/rec_2.dat?downlo
 ecg_dat <- readBin(ecg_url, integer(), 500*30)
 ecg_sec <- (0:(length(ecg_dat) - 1)) / 500 # rel. time in seconds
 r_peaks <- rpeaks_pan_tompkins(ecg = ecg_dat, sample_rate = 500)
-plot(x = ecg_sec, y = ecg_dat, type = "l")
+plot(x = ecg_sec, y = ecg_dat, type = "l", xlab = "time (seconds)", ylab = "ecg")
 abline(v = r_peaks, col = "blue", lty = 3)
 ```
+<p align="center">
+  <img src="./img/example.png" width="700px"></img>
+</p>
+
 
 ## Speed comparison
+
+The package achieves a nice speedup relative to the `rsleep` implementation:
+
 <p align="center">
   <img src="./img/speedcomparison.png" width="700px"></img>
 </p>
