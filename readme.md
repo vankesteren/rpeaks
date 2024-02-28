@@ -3,6 +3,7 @@
 </p>
 
 [![R-CMD-check](https://github.com/vankesteren/rpeaks/actions/workflows/rcmdcheck.yml/badge.svg)](https://github.com/vankesteren/rpeaks/actions/workflows/rcmdcheck.yml)
+[![rpeaks status badge](https://vankesteren.r-universe.dev/badges/rpeaks)](https://vankesteren.r-universe.dev/rpeaks)
 
 Fast implementation of Pan & Tompkins (1985). It is programmed relatively efficiently, using `Rcpp` and `RcppArmadillo` to process long ecg data much faster than alternatives. Default processing parameters are taken directly from the original paper.
 
